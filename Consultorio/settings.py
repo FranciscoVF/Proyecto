@@ -77,9 +77,13 @@ WSGI_APPLICATION = 'Consultorio.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd63bm0b8lnbnn8',
+        'HOST' :'c2-3-214-4-151.compute-1.amazonaws.com',
+        'PORT':5432,
+        'USER':'yrgzhynqgjjgap',
+        'PASSWORD':'689efc39938bb91f58ad3ee03aa8b8e971f6f809923ee30dbf1e2db11de3a595',
+   }
 }
 
 # DATABASES = {
