@@ -26,7 +26,7 @@ SECRET_KEY = '$*2v$b-2-p!!b!z$)mflqbwwk*3-ulq@4#oae-e_&#=__5)t*o'
 DEBUG = True
 
 # ALLOWED_HOSTS = ['franciscojaviervf.pythonanywhere.com']
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', 'sitio-consultorio.herokuapp.com']
 
 # Application definition
 
