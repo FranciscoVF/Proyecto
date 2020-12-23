@@ -1,1 +1,1 @@
-web: gunicorn Consultorio.wsgl
+web: gunicorn Consultorio.wsgi
