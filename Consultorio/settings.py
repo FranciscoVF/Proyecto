@@ -25,8 +25,8 @@ SECRET_KEY = '$*2v$b-2-p!!b!z$)mflqbwwk*3-ulq@4#oae-e_&#=__5)t*o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+# ALLOWED_HOSTS = ['franciscojaviervf.pythonanywhere.com']
+ALLOWED_HOSTS = ['localhost', 'franciscojaviervf.pythonanywhere.com']
 
 # Application definition
 
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'general',
 ]
 
 MIDDLEWARE = [
@@ -75,14 +76,20 @@ WSGI_APPLICATION = 'Consultorio.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'FranciscoJavierV$db_sitio',
-        'USER': 'FranciscoJavierV',
-        'PASSWORD': 'proyecto1',
-        'HOST': 'FranciscoJavierVF.mysql.pythonanywhere-services.com',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
+# DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'FranciscoJavierV$db_sitio',
+#        'USER': 'FranciscoJavierV',
+#        'PASSWORD': 'proyecto1',
+#        'HOST': 'FranciscoJavierVF.mysql.pythonanywhere-services.com',
+#    }
+#}
 
 
 # Password validation
@@ -121,7 +128,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'Consultorio/static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
