@@ -59,7 +59,7 @@
 					<a class="nav-link fnt-color" href="" style="color: #fff;">Contactanos</a>
 				</li>
 		    </ul>
-        <a href="" style="color:#fff;"><b>{{ request.user.username }}</b></a>
+        <a href="" style="color:#fff;">Usuario: <b>{{ request.user.username }}</b></a>
 	</nav>
         <!-- End of Topbar -->
 {% endblock navbar %}
@@ -77,7 +77,6 @@
       </div>
       <!-- End of Main Content -->
 {% endblock content %}
-<a href="" class="btn btn-primary">Back</a>
 {% block footer %}
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
