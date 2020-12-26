@@ -25,7 +25,6 @@ SECRET_KEY = '$*2v$b-2-p!!b!z$)mflqbwwk*3-ulq@4#oae-e_&#=__5)t*o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['franciscojaviervf.pythonanywhere.com']
 ALLOWED_HOSTS = ['localhost','127.0.0.1', 'sitio-consultorio.herokuapp.com']
 
 # Application definition
@@ -37,7 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'general',
+    'apps.general',
+    'apps.Medicos',
 ]
 
 MIDDLEWARE = [
