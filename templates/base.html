@@ -59,8 +59,14 @@
 					<a class="nav-link fnt-color" href="" style="color: #fff;">Contactanos</a>
 				</li>
 		    </ul>
-        <a href="{% url 'login'%}" style="color:#fff;">Usuario: <b>{{ request.user.username }}</b></a>
-	</nav>
+        {% if request.user.is_superuser %}
+        <a href="{% url 'Medicos:Seccion_Director'%}"style="color:#fff;">Usuario: <b>{{ request.user.username }}</b></a>
+        {% elif request.user.is_staff %}
+        <a href="{% url 'Medicos:Seccion_Director'%}"style="color:#fff;">Usuario: <b>{{ request.user.username }}</b></a>
+	    {% else %}
+        <a href="{% url 'login'%}"style="color:#fff;">Login: <b>{{ request.user.username }}</b></a>
+        {% endif %}
+    </nav>
         <!-- End of Topbar -->
 {% endblock navbar %}
 
