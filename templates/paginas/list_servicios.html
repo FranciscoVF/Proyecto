@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Servicios{% endblock title %}
+
+{% block content %}
+<table class="table table-striped">
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    {% for listmedicos in object_list %}
+      <tr>
+          <td>{{ listmedicos.nombre }}</td>
+          <td>{{ listmedicos.apellido_p }}</td>
+          <td>{{ listmedicos.apellido_m }}</td>
+          <td>{{ listmedicos.servicio }}</td>
+      </tr>
+    {% endfor %}
+</table>
+
+{% endblock content %}
