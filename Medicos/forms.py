@@ -1,5 +1,7 @@
+from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from .models import Servicios
 
 
 class RegistroForm(UserCreationForm):
@@ -18,3 +20,11 @@ class RegistroForm(UserCreationForm):
             'last_name': 'Apellido',
             'email': 'Correo',
         }
+
+class CrearServicio(forms.ModelForm):
+    class Meta:
+        model = Servicios
+        fields = [
+        "nombre",
+        "descripcion"
+        ]
