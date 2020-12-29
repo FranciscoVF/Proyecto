@@ -5,7 +5,7 @@ from django.views import generic
 from django.views.generic import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Medicos, Servicios
-from .forms import RegistroForm, CrearServicio
+from .forms import RegistroUsuarioForm, CrearServicio, RegistroMedicoForm
 
 
 class DirectorSeccion(LoginRequiredMixin, UserPassesTestMixin, generic.TemplateView):
@@ -26,15 +26,23 @@ class CreateServicios(LoginRequiredMixin, CreateView):
         return self.request.user.is_superuser
 
 
-class MedicoRegistro(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+class UsuarioRegistro(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = User
-    template_name = "paginas/registroMedico.html"
-    form_class = RegistroForm
+    template_name = "paginas/crear_usuario.html"
+    form_class = RegistroUsuarioForm
     success_url = reverse_lazy('Medicos:Seccion_Director')
 
     def test_func(self):
         return self.request.user.is_superuser
 
+class MedicoRegistro(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+    model = Medicos
+    template_name = "paginas/crear_medico.html"
+    form_class = RegistroMedicoForm
+    success_url = reverse_lazy('Medicos:Seccion_Director')
+
+    def test_func(self):
+        return self.request.user.is_superuser
 
 ## READ ##
 class ListMedicos(generic.ListView):

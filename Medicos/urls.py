@@ -1,14 +1,16 @@
 from django.contrib import admin
 from django.urls import path,include
-from .views import MedicoRegistro, DirectorSeccion, ListMedicos, ListServicios, CreateServicios
+from .views import UsuarioRegistro, DirectorSeccion, ListMedicos, ListServicios, CreateServicios, MedicoRegistro
 
 app_name='Medicos'
 urlpatterns = [
-    path('registrarMedico/',MedicoRegistro.as_view(),name='Medico_Registrar'),
+
     path('director/', DirectorSeccion.as_view(), name="Seccion_Director"),
 
     path('listMedicos/', ListMedicos.as_view(), name="List_Medicos"),
     path('listServicios/', ListServicios.as_view(), name="List_Servicios"),
 
+    path('usuarioRegistro/',UsuarioRegistro.as_view(),name='Usuario_Registrar'),
     path('crearServicio/', CreateServicios.as_view(), name= "Crear_Servicio"),
+    path('medicoRegistro/', MedicoRegistro.as_view(), name= "Medico_Registrar"),
 ]

@@ -1,10 +1,10 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import Servicios
+from .models import Servicios, Medicos
 
 
-class RegistroForm(UserCreationForm):
+class RegistroUsuarioForm(UserCreationForm):
     class Meta:
         model = User
         fields = [
@@ -27,4 +27,18 @@ class CrearServicio(forms.ModelForm):
         fields = [
         "nombre",
         "descripcion"
+        ]
+
+class RegistroMedicoForm(forms.ModelForm):
+    class Meta:
+        model = Medicos
+        fields = [
+            'medico',
+            'nombre',
+            'apellido_p',
+            'apellido_m',
+            'servicio',
+            'entrada',
+            'salida',
+            'dias_de_trabajo',
         ]

@@ -4,16 +4,26 @@
 
 {% block content %}
 <table class="table table-striped">
+    <th>Medico Atendiendo</th>
+    <th></th>
+    <th></th>
+    <th>Servicio</th>
     <th></th>
     <th></th>
     <th></th>
     <th></th>
+    <th>Costo</th>
     {% for listmedicos in object_list %}
       <tr>
-          <td>{{ listmedicos.nombre }}</td>
-          <td>{{ listmedicos.apellido_p }}</td>
-          <td>{{ listmedicos.apellido_m }}</td>
+          <td>{{ listmedicos.nombre }} {{ listmedicos.apellido_p }} {{ listmedicos.apellido_m }}</td>
+          <td></td>
+          <td></td>
           <td>{{ listmedicos.servicio }}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Costos consultables en recepcion o por telefono</td>
       </tr>
     {% endfor %}
 </table>
