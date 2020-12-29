@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Medico{% endblock title %}
+
+{% block content %}
+<table class="table table-striped">
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Descripcion</th>
+    {% for listservicios in object_list %}
+      <tr>
+          <td>{{ listservicios.id }}</td>
+          <td>{{ listservicios.nombre }}</td>
+          <td>{{ listservicios.descripcion }}</td>
+          <td><a href=""><button type="button" id="btnEditar" class="btn btn-success btn-circle"><i class="fas fa-pen fa-sm"></i></button></a></td>
+      </tr>
+    {% endfor %}
+</table>
+
+{% endblock content %}

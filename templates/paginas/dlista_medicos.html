@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Medico{% endblock title %}
+
+{% block content %}
+<table class="table table-striped">
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Entrada</th>
+    <th>Salida</th>
+    <th>Dias que atiende</th>
+    {% for listmedicos in object_list %}
+      <tr>
+          <td>{{ listmedicos.nombre }}</td>
+          <td>{{ listmedicos.apellido_p }}</td>
+          <td>{{ listmedicos.entrada }}</td>
+          <td>{{ listmedicos.salida }}</td>
+          <td>{{ listmedicos.dias_de_trabajo }}</td>
+          <td><a href=""><button type="button" id="btnEditar" class="btn btn-success btn-circle"><i class="fas fa-pen fa-sm"></i></button></a></td>
+      </tr>
+    {% endfor %}
+</table>
+
+{% endblock content %}

@@ -54,6 +54,22 @@ class ListServicios(generic.ListView):
     template_name = "paginas/list_servicios.html"
     queryset = Medicos.objects.all().order_by('id')
 
+class DListMedicos(LoginRequiredMixin, UserPassesTestMixin, generic.ListView):
+    template_name = "paginas/dlista_medicos.html"
+    queryset = Medicos.objects.all().order_by('id')
+
+    def test_func(self):
+        return self.request.user.is_superuser
+
+class DListServicios(LoginRequiredMixin, UserPassesTestMixin, generic.ListView):
+    template_name = "paginas/dlista_servicios.html"
+    queryset = Servicios.objects.all().order_by('id')
+
+    def test_func(self):
+        return self.request.user.is_superuser
+
 ## UPDATE ##
+
+
 
 ## DELETE ##
