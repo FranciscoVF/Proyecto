@@ -21,6 +21,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("general.urls", namespace="home")),
     path('medico/',include('Medicos.urls')),
+    path('paciente/',include('pacientes.urls')),
+
     path('accounts/login/',LoginView.as_view(template_name='paginas/login.html'),name='login'),
     path('logout/',logout_then_login,name='logout'),
 ]
