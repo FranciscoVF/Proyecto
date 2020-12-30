@@ -9,6 +9,7 @@
     <th>Entrada</th>
     <th>Salida</th>
     <th>Dias que atiende</th>
+    <th></th>
     {% for listmedicos in object_list %}
       <tr>
           <td>{{ listmedicos.nombre }}</td>
@@ -20,8 +21,10 @@
               <a href="{% url 'Medicos:DUpdate_Medico' listmedicos.id %}"><button type="button" id="btnEditar" class="btn btn-success btn-circle"><i class="fas fa-pen fa-sm"></i></button></a>
               <a href="{% url 'Medicos:Eliminar_Medico' listmedicos.id %}"><button type="button" name="button" id="btnEliminar" class="btn btn-danger btn-circle"><i class="fas fa-trash fa-sm"></i></button></a>
           </td>
-      </tr>
+    </tr>
     {% endfor %}
+
 </table>
+<a  href="{% url 'Medicos:Seccion_Director' %}" class="btn btn-dark" style="float: right;" type="submit">Regresar</a>
 
 {% endblock content %}

@@ -2,7 +2,8 @@ from django.contrib import admin
 from django.urls import path,include
 from .views import UsuarioRegistro, DirectorSeccion, ListMedicos, \
     ListServicios, CreateServicios, MedicoRegistro, DListMedicos, \
-    DListServicios, DirectorUpdateMedico, EliminarMedico
+    DListServicios, DirectorUpdateMedico, EliminarMedico, DirectorUpdateServicio, \
+    EliminarServicio
 
 app_name='Medicos'
 urlpatterns = [
@@ -19,6 +20,8 @@ urlpatterns = [
     path('medicoRegistro/', MedicoRegistro.as_view(), name= "Medico_Registrar"),
 
     path('dUpdateMedico/<int:pk>/', DirectorUpdateMedico.as_view(), name="DUpdate_Medico"),
+    path('dUpdateServicio/<int:pk>/', DirectorUpdateServicio.as_view(), name="DUpdate_Servicio"),
 
     path('EliminarMedico/<int:pk>/', EliminarMedico.as_view(), name="Eliminar_Medico"),
+    path('EliminarServicio/<int:pk>/', EliminarServicio.as_view(), name="Eliminar_Servicio"),
 ]

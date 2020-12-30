@@ -35,6 +35,7 @@ class UsuarioRegistro(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     def test_func(self):
         return self.request.user.is_superuser
 
+
 class MedicoRegistro(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Medicos
     template_name = "paginas/crear_medico.html"
@@ -43,6 +44,7 @@ class MedicoRegistro(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 
     def test_func(self):
         return self.request.user.is_superuser
+
 
 ## READ ##
 class ListMedicos(generic.ListView):
@@ -54,12 +56,14 @@ class ListServicios(generic.ListView):
     template_name = "paginas/list_servicios.html"
     queryset = Servicios.objects.all().order_by('id')
 
+
 class DListMedicos(LoginRequiredMixin, UserPassesTestMixin, generic.ListView):
     template_name = "paginas/dlista_medicos.html"
     queryset = Medicos.objects.all().order_by('id')
 
     def test_func(self):
         return self.request.user.is_superuser
+
 
 class DListServicios(LoginRequiredMixin, UserPassesTestMixin, generic.ListView):
     template_name = "paginas/dlista_servicios.html"
@@ -68,22 +72,44 @@ class DListServicios(LoginRequiredMixin, UserPassesTestMixin, generic.ListView):
     def test_func(self):
         return self.request.user.is_superuser
 
+
 ## UPDATE ##
 class DirectorUpdateMedico(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
     template_name = "paginas/actualizar_medico.html"
     model = Medicos
     form_class = RegistroMedicoForm
-    success_url = reverse_lazy('Medicos:Seccion_Director')
+    success_url = reverse_lazy('Medicos:DLista_Medicos')
 
     def test_func(self):
         return self.request.user.is_superuser
+
+
+class DirectorUpdateServicio(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
+    template_name = "paginas/actualizar_servicio.html"
+    model = Servicios
+    form_class = CrearServicio
+    success_url = reverse_lazy('Medicos:DLista_Servicios')
+
+    def test_func(self):
+        return self.request.user.is_superuser
+
 
 ## DELETE ##
 class EliminarMedico(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
     template_name = "paginas/eliminar_medico.html"
     model = Medicos
     form_class = RegistroMedicoForm
-    success_url = reverse_lazy('Medicos:Seccion_Director')
+    success_url = reverse_lazy('Medicos:DLista_Medicos')
+
+    def test_func(self):
+        return self.request.user.is_superuser
+
+
+class EliminarServicio(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
+    template_name = "paginas/eliminar_servicio.html"
+    model = Servicios
+    form_class = CrearServicio
+    success_url = reverse_lazy('Medicos:DLista_Servicios')
 
     def test_func(self):
         return self.request.user.is_superuser
