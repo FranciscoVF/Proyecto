@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path,include
 from .views import UsuarioRegistro, DirectorSeccion, ListMedicos, \
     ListServicios, CreateServicios, MedicoRegistro, DListMedicos, \
-    DListServicios, DirectorUpdateMedico
+    DListServicios, DirectorUpdateMedico, EliminarMedico
 
 app_name='Medicos'
 urlpatterns = [
@@ -19,4 +19,6 @@ urlpatterns = [
     path('medicoRegistro/', MedicoRegistro.as_view(), name= "Medico_Registrar"),
 
     path('dUpdateMedico/<int:pk>/', DirectorUpdateMedico.as_view(), name="DUpdate_Medico"),
+
+    path('EliminarMedico/<int:pk>/', EliminarMedico.as_view(), name="Eliminar_Medico"),
 ]

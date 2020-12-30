@@ -79,3 +79,11 @@ class DirectorUpdateMedico(LoginRequiredMixin, UserPassesTestMixin, generic.Upda
         return self.request.user.is_superuser
 
 ## DELETE ##
+class EliminarMedico(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
+    template_name = "paginas/eliminar_medico.html"
+    model = Medicos
+    form_class = RegistroMedicoForm
+    success_url = reverse_lazy('Medicos:Seccion_Director')
+
+    def test_func(self):
+        return self.request.user.is_superuser
