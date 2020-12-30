@@ -16,7 +16,7 @@
           <td>{{ listmedicos.entrada }}</td>
           <td>{{ listmedicos.salida }}</td>
           <td>{{ listmedicos.dias_de_trabajo }}</td>
-          <td><a href=""><button type="button" id="btnEditar" class="btn btn-success btn-circle"><i class="fas fa-pen fa-sm"></i></button></a></td>
+          <td><a href="{% url 'Medicos:DUpdate_Medico' listmedicos.id %}"><button type="button" id="btnEditar" class="btn btn-success btn-circle"><i class="fas fa-pen fa-sm"></i></button></a></td>
       </tr>
     {% endfor %}
 </table>

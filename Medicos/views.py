@@ -52,7 +52,7 @@ class ListMedicos(generic.ListView):
 
 class ListServicios(generic.ListView):
     template_name = "paginas/list_servicios.html"
-    queryset = Medicos.objects.all().order_by('id')
+    queryset = Servicios.objects.all().order_by('id')
 
 class DListMedicos(LoginRequiredMixin, UserPassesTestMixin, generic.ListView):
     template_name = "paginas/dlista_medicos.html"
@@ -69,7 +69,13 @@ class DListServicios(LoginRequiredMixin, UserPassesTestMixin, generic.ListView):
         return self.request.user.is_superuser
 
 ## UPDATE ##
+class DirectorUpdateMedico(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
+    template_name = "paginas/actualizar_medico.html"
+    model = Medicos
+    form_class = RegistroMedicoForm
+    success_url = reverse_lazy('Medicos:Seccion_Director')
 
-
+    def test_func(self):
+        return self.request.user.is_superuser
 
 ## DELETE ##
