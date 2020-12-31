@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Crear cita{% endblock title %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-3"></div>
+			<div class="card col-6 my-4">
+				<div class="card-header" style="background-color: #007fba; font-size: 18px;">
+					<p class="text-center font-weight-bold" style="color: #fff;">Crear cita nueva</p>
+				</div>
+				<div class="card-body">
+					<form class="" action="" method="post">
+  						{% csrf_token %}
+  						{{ form|crispy }}
+						<div class="form-group">
+							<button class="btn btn-dark" type="submit ">Guardar</button>
+							<a  href="{% url 'paginas:home' %}" class="btn btn-light" type="submit ">Cancelar</a>
+						</div>
+					</form>
+				</div>
+			</div>
+	</div>
+</div>
+{% endblock content %}
