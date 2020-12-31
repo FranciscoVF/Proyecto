@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Pacientes, Cita
+from .models import Pacientes, Cita, Receta
 
 class PacientesForm(forms.ModelForm):
     class Meta:
@@ -24,4 +24,15 @@ class CitasForm(forms.ModelForm):
             'servicio',
             'nombre_paciente',
             'dia_hora_cita',
+        ]
+
+class RecetaForm(forms.ModelForm):
+    class Meta:
+        model = Receta
+        fields = [
+            'creada_por',
+            'medicina',
+            'nombre_paciente',
+            'fecha_vencimiento',
+            'descripcion',
         ]

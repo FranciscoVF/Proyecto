@@ -3,8 +3,8 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.views.generic import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from .models import Pacientes, Cita
-from .forms import PacientesForm, CitasForm
+from .models import Pacientes, Cita, Receta
+from .forms import PacientesForm, CitasForm, RecetaForm
 # Create your views here.
 
 class CrearConsulta(LoginRequiredMixin,UserPassesTestMixin, CreateView):
@@ -21,6 +21,15 @@ class CrearCita(LoginRequiredMixin,UserPassesTestMixin, CreateView):
     model = Cita
     form_class = CitasForm
     success_url = reverse_lazy('Pacientes:Crear_Cita')
+
+    def test_func(self):
+        return self.request.user.is_active
+
+class CrearReceta(LoginRequiredMixin,UserPassesTestMixin, CreateView):
+    template_name = "consultas/crear_receta.html"
+    model = Receta
+    form_class = RecetaForm
+    success_url = reverse_lazy('Pacientes:Crear_Receta')
 
     def test_func(self):
         return self.request.user.is_active

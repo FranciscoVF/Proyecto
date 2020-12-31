@@ -25,3 +25,14 @@ class Cita(models.Model):
 
     def __str__(self):
         return self.nombre_paciente
+
+class Receta(models.Model):
+    creada_por = models.ForeignKey(User, on_delete=models.CASCADE, null = True)
+    fecha_creada = models.DateTimeField(auto_now_add=True, null = True)
+    medicina = models.CharField(max_length=50, null=True, help_text="Medicina que se esta recetando")
+    nombre_paciente = models.CharField(max_length=50, null = True,help_text="Nombre completo del paciente")
+    fecha_vencimiento = models.DateTimeField(null=True, help_text="Hasta que fecha ser tiene para usar.Formato AAAA-MM-DD Ejemplo: 2021-01-17")
+    descripcion = models.CharField(max_length=50, null=True, help_text="Detalles como cantidad y cada cuanto tomar")
+
+    def __str__(self):
+        return self.nombre_paciente
