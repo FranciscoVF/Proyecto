@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Citas{% endblock title %}
+
+{% block content %}
+  <table class="table table-striped">
+    <th>ID</th>
+    <th>Fecha Creado</th>
+    <th>Creado Por</th>
+    <th>Paciente</th>
+    <th>Fecha de cita</th>
+    {% for cit in citas %}
+      <tr>
+        <td>{{ cit.id }}</td>
+        <td>{{ cit.fecha_creada  }}</td>
+        <td>{{ cit.creada_por }}</td>
+        <td>{{ cit.nombre_paciente }}</td>
+        <td>{{ cit.dia_hora_cita }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+
+{% endblock content %}
