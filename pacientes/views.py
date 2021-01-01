@@ -44,7 +44,6 @@ class CrearReceta(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 def MedicoConsultarCitas(request, pk):
     context = {
         "citas": Cita.objects.filter(servicio=pk).order_by('id')
-#        "citas": Cita.objects.filter(servicio__servicio__startswith='Rayos')
     }
     return render(request, "consultas/list_cita_area.html", context)
 
@@ -54,3 +53,10 @@ class BitacorasSeccion(LoginRequiredMixin, UserPassesTestMixin, generic.Template
 
     def test_func(self):
         return self.request.user.is_superuser
+
+def DirectorListaRecetas(request):
+    template = "consultas/dlist_recetas.html"
+    context = {
+        "recetas": Receta.objects.order_by('-fecha_creada')
+    }
+    return render(request, template, context)

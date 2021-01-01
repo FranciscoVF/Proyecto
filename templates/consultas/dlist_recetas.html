@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Medico{% endblock title %}
+
+{% block content %}
+<table class="table table-striped">
+    <th>ID</th>
+    <th>Medico</th>
+    <th>Paciente</th>
+    <th>Medicina</th>
+    <th>Descripcion</th>
+    <th>Fecha</th>
+    {% for listrecetas in recetas %}
+      <tr>
+          <td>{{ listrecetas.id }}</td>
+          <td>{{ listrecetas.creada_por }}</td>
+          <td>{{ listrecetas.nombre_paciente  }}</td>
+          <td>{{ listrecetas.medicina}}</td>
+          <td>{{ listrecetas.descripcion }}</td>
+          <td>{{ listrecetas.fecha_creada }}</td>
+
+      </tr>
+    {% endfor %}
+</table>
+<a  href="{% url 'Pacientes:Lista_Bitacoras' %}" class="btn btn-dark" style="float: right;" type="submit">Regresar</a>
+
+{% endblock content %}
