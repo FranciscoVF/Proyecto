@@ -47,3 +47,10 @@ def MedicoConsultarCitas(request, pk):
 #        "citas": Cita.objects.filter(servicio__servicio__startswith='Rayos')
     }
     return render(request, "consultas/list_cita_area.html", context)
+
+
+class BitacorasSeccion(LoginRequiredMixin, UserPassesTestMixin, generic.TemplateView):
+    template_name = "consultas/director_bitacoras.html"
+
+    def test_func(self):
+        return self.request.user.is_superuser

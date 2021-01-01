@@ -27,8 +27,7 @@
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
 {% block navbar %}
-        <!-- Topbar -->
- 	<nav class="navbar navbar-dark " style="background-color: #4e73df" position="fixed">
+          <nav  class="navbar navbar-dark " style="background-color: #4e73df">
 		<a class="navbar-brand" href="{% url 'paginas:home'%}">Inicio</a>
 			<ul class="navbar-nav">
 				<li class="nav-item">
@@ -55,7 +54,7 @@
             <a class="dropbtn" style="color:#fff;">Usuario: <b>{{ request.user.username }}</b></a>
             <div class="dropdown-content">
                 <a href="{% url 'Medicos:Seccion_Director' %}">Medicos & Servicios</a>
-                <a href="#">Pacientes & Recetas</a>
+                <a href="{% url 'Pacientes:Lista_Bitacoras' %}">Pacientes & Recetas</a>
                 <a href="{% url 'Pacientes:Crear_Consulta' %}">Crear consulta</a>
                 <a href="{% url 'Pacientes:Crear_Cita' %}">Crear cita</a>
                 <a href="{% url 'Pacientes:Crear_Receta' %}">Crear recetas</a>
@@ -76,8 +75,8 @@
 	    {% else %}
         <a href="{% url 'login'%}"style="color:#fff;">Login <b></b></a>
         {% endif %}
-    </nav>
-        <!-- End of Topbar -->
+          </nav>
+
 {% endblock navbar %}
 
 {% block content %}
