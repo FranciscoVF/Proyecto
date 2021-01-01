@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Editar Medico{% endblock title %}
+{% block title %}Recetas{% endblock title %}
 
 {% block content %}
 <table class="table table-striped">
@@ -10,7 +10,7 @@
     <th>Medicina</th>
     <th>Descripcion</th>
     <th>Fecha</th>
-    {% for listrecetas in recetas %}
+    {% for listrecetas in object_list %}
       <tr>
           <td>{{ listrecetas.id }}</td>
           <td>{{ listrecetas.creada_por }}</td>

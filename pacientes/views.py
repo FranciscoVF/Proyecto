@@ -54,9 +54,25 @@ class BitacorasSeccion(LoginRequiredMixin, UserPassesTestMixin, generic.Template
     def test_func(self):
         return self.request.user.is_superuser
 
-def DirectorListaRecetas(request):
-    template = "consultas/dlist_recetas.html"
-    context = {
-        "recetas": Receta.objects.order_by('-fecha_creada')
-    }
-    return render(request, template, context)
+#def DirectorListaRecetas(request):
+#    template = "consultas/dlist_recetas.html"
+ #   context = {
+  #      "recetas": Receta.objects.order_by('-fecha_creada')
+   # }
+    #return render(request, template, context)
+
+class DirectorListaRecetas(LoginRequiredMixin, UserPassesTestMixin, generic.ListView):
+    template_name = "consultas/dlist_recetas.html"
+    model = Receta
+    queryset = Receta.objects.all().order_by('fecha_creada')
+
+    def test_func(self):
+        return self.request.user.is_superuser
+
+class DirectorListaPacientes(LoginRequiredMixin, UserPassesTestMixin, generic.ListView):
+    template_name = "consultas/dlist_pacientes.html"
+    model = Pacientes
+    queryset = Pacientes.objects.all().order_by('hora_atendido')
+
+    def test_func(self):
+        return self.request.user.is_superuser

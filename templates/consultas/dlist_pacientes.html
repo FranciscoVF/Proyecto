@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Pacientes{% endblock title %}
+
+{% block content %}
+<table class="table table-striped">
+    <th>ID</th>
+    <th>Medico</th>
+    <th>Paciente</th>
+    <th>Edad</th>
+    <th>Descripcion</th>
+    <th>Contacto</th>
+    <th>Fecha de atencion</th>
+    {% for listpacientes in object_list %}
+      <tr>
+          <td>{{ listpacientes.id }}</td>
+          <td>{{ listpacientes.atendiendo }}</td>
+          <td>{{ listpacientes.nombre }} {{ listpacientes.apellido_p }} {{ listpacientes.apellido_m }}</td>
+          <td>{{ listpacientes.edad }}</td>
+          <td>{{ listpacientes.descripcion }}</td>
+          <td>{{ listpacientes.contacto }}</td>
+          <td>{{ listpacientes.hora_atendido }}</td>
+      </tr>
+    {% endfor %}
+</table>
+<a  href="{% url 'Pacientes:Lista_Bitacoras' %}" class="btn btn-dark" style="float: right;" type="submit">Regresar</a>
+
+{% endblock content %}
