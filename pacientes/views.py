@@ -76,3 +76,12 @@ class DirectorListaPacientes(LoginRequiredMixin, UserPassesTestMixin, generic.Li
 
     def test_func(self):
         return self.request.user.is_superuser
+
+
+class DirectorListaCitas(LoginRequiredMixin, UserPassesTestMixin, generic.ListView):
+    template_name = "consultas/dlist_citas.html"
+    model = Cita
+    queryset = Cita.objects.all().order_by('fecha_creada')
+
+    def test_func(self):
+        return self.request.user.is_superuser

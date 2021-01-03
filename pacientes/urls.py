@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path,include
 from .views import CrearConsulta, CrearCita, CrearReceta, MedicoConsultarCitas, BitacorasSeccion, \
-    DirectorListaRecetas, DirectorListaPacientes
+    DirectorListaRecetas, DirectorListaPacientes, DirectorListaCitas
 app_name='Pacientes'
 
 urlpatterns = [
@@ -14,4 +14,5 @@ urlpatterns = [
     path('consultarCitas/<int:pk>/', MedicoConsultarCitas, name="Consultar_citas"),
     path('listaCitas/', DirectorListaRecetas.as_view(),name="Director_Lista_Recetas"),
     path('listaPacientes/', DirectorListaPacientes.as_view(),name="Director_Lista_Pacientes"),
+    path('listaCitas/', DirectorListaCitas.as_view(),name="Director_Lista_Citas"),
 ]
