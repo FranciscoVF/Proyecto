@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base.html" %}
+
+{% block title %}Citas{% endblock title %}
+
+{% block content %}
+<table class="table table-striped">
+    <th>ID</th>
+    <th>Medico</th>
+    <th>Registrada para cita con medico</th>
+    <th>Paciente</th>
+    <th>Fecha</th>
+    {% for listcita in object_list %}
+      <tr>
+          <td>{{ listcita.id }}</td>
+          <td>{{ listcita.creada_por }}</td>
+          <td>{{ listcita.servicio }}</td>
+          <td>{{ listcita.nombre_paciente }}</td>
+          <td>{{ listcita.dia_hora_cita }}</td>
+
+      </tr>
+    {% endfor %}
+</table>
+<a  href="{% url 'Pacientes:Lista_Bitacoras' %}" class="btn btn-dark" style="float: right;" type="submit">Regresar</a>
+
+{% endblock content %}

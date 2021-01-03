@@ -12,7 +12,7 @@ urlpatterns = [
     path('crearReceta/', CrearReceta.as_view(), name="Crear_Receta"),
 
     path('consultarCitas/<int:pk>/', MedicoConsultarCitas, name="Consultar_citas"),
-    path('listaCitas/', DirectorListaRecetas.as_view(),name="Director_Lista_Recetas"),
+    path('listaRecetas/', DirectorListaRecetas.as_view(),name="Director_Lista_Recetas"),
     path('listaPacientes/', DirectorListaPacientes.as_view(),name="Director_Lista_Pacientes"),
     path('listaCitas/', DirectorListaCitas.as_view(),name="Director_Lista_Citas"),
 ]
