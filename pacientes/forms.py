@@ -36,3 +36,15 @@ class RecetaForm(forms.ModelForm):
             'fecha_vencimiento',
             'descripcion',
         ]
+
+class ImpRecetaForm(forms.ModelForm):
+    class Meta:
+        model = Receta
+        fields = [
+            'id',
+            'creada_por',
+            'medicina',
+            'nombre_paciente',
+            'fecha_vencimiento',
+            'descripcion',
+        ]

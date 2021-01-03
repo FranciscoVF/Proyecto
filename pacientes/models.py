@@ -16,6 +16,7 @@ class Pacientes(models.Model):
     def __str__(self):
         return self.nombre
 
+
 class Cita(models.Model):
     creada_por = models.ForeignKey(User, on_delete=models.CASCADE, null = True, related_name='Atendiendo')
     fecha_creada = models.DateTimeField(auto_now_add=True, null = True)
@@ -25,6 +26,7 @@ class Cita(models.Model):
 
     def __str__(self):
         return self.nombre_paciente
+
 
 class Receta(models.Model):
     creada_por = models.ForeignKey(User, on_delete=models.CASCADE, null = True)

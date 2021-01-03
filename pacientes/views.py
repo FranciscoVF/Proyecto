@@ -2,10 +2,15 @@ from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from django.views import generic
 from django.shortcuts import render
-from django.views.generic import CreateView
+from django.views.generic import CreateView, View
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Pacientes, Cita, Receta
-from .forms import PacientesForm, CitasForm, RecetaForm
+from .forms import PacientesForm, CitasForm, RecetaForm, ImpRecetaForm
+
+from .utils import render_to_pdf
+from django.template.loader import get_template
+from django.http import HttpResponse
+
 from Medicos.models import Servicios, Medicos
 
 
@@ -54,12 +59,13 @@ class BitacorasSeccion(LoginRequiredMixin, UserPassesTestMixin, generic.Template
     def test_func(self):
         return self.request.user.is_superuser
 
-#def DirectorListaRecetas(request):
+
+# def DirectorListaRecetas(request):
 #    template = "consultas/dlist_recetas.html"
- #   context = {
-  #      "recetas": Receta.objects.order_by('-fecha_creada')
-   # }
-    #return render(request, template, context)
+#   context = {
+#      "recetas": Receta.objects.order_by('-fecha_creada')
+# }
+# return render(request, template, context)
 
 class DirectorListaRecetas(LoginRequiredMixin, UserPassesTestMixin, generic.ListView):
     template_name = "consultas/dlist_recetas.html"
@@ -68,6 +74,7 @@ class DirectorListaRecetas(LoginRequiredMixin, UserPassesTestMixin, generic.List
 
     def test_func(self):
         return self.request.user.is_superuser
+
 
 class DirectorListaPacientes(LoginRequiredMixin, UserPassesTestMixin, generic.ListView):
     template_name = "consultas/dlist_pacientes.html"
@@ -85,3 +92,33 @@ class DirectorListaCitas(LoginRequiredMixin, UserPassesTestMixin, generic.ListVi
 
     def test_func(self):
         return self.request.user.is_superuser
+
+
+def MedicoConsultarRecetas(request, pk):
+    context = {
+        "recetas": Receta.objects.filter(creada_por=pk).order_by('id')
+    }
+    return render(request, "consultas/list_recetas_area.html", context)
+
+
+#class GeneratePDF(LoginRequiredMixin, UserPassesTestMixin, generic.DetailView):
+ #   template_name = "consultas/receta.html"
+  #  model = Receta
+   # form_class = ImpRecetaForm
+    #success_url = reverse_lazy('Medicos:DLista_Servicios')
+    #content_type = 'application/pdf'
+
+    #def test_func(self):
+     #   return self.request.user.is_active
+
+class GeneratePDF(View):
+    def get(self, request, pk, *args, **kwargs):
+        template = get_template("consultas/receta.html")
+        consulta = Receta.objects.get(id=pk)
+        context ={
+            "recetas": Receta.objects.filter(id=pk),
+            "medico": Medicos.objects.filter(medico=consulta.creada_por)
+        }
+        html = template.render(context)
+        pdf = render_to_pdf('consultas/receta.html', context)
+        return HttpResponse(pdf, content_type='application/pdf')

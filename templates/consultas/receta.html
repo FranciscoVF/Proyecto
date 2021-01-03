@@ -1,0 +1,48 @@
+<style>
+ .titulos{
+  font-size:20px;
+  font-family:'Courier New';
+
+  }
+  .relleno{
+  font-size:15px;
+  font-family:'Courier New';
+  text-decoration: underline;
+  }
+  .derecha{
+  text-align:right;
+  }
+  .izquierda{
+  text-align:left;
+  }
+
+</style>
+
+
+{% csrf_token %}
+{% for rec in recetas %}
+<div id="encabezado">
+ <p class="derecha">
+ <span class="titulos">Fecha creado: </span> <span class="relleno">{{ rec.fecha_creada|date:"F d Y" }}</span>
+ </p>
+<br>
+</div>
+{% endfor %}
+
+
+ {% for med in medico %}
+ <span class="titulos">Medico:</span> <span class="relleno">{{ med.nombre }} {{ med.apellido_p }} {{ med.apellido_m }}</span>
+
+{% endfor %}
+
+
+ {% for rec in recetas %}
+ <span class="titulos">Paciente:</span> <span class="relleno">{{ rec.nombre_paciente }}</span>
+<p></p>
+<span class="titulos">Medicina:</span> <span class="relleno">{{ rec.medicina }}</span>
+<p></p>
+ <span class="titulos">Descripcion:</span>  <span class="relleno">{{ rec.descripcion }}</span>
+<p></p>
+ <span class="titulos">Vencimiento:</span> <span class="relleno">{{ rec.fecha_vencimiento|date:"F d Y" }}</span>
+<p class="titulos" style="text-align:right">Firma del medico: ___________________</p>
+{% endfor %}

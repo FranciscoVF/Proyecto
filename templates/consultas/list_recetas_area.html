@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Recetas{% endblock title %}
+
+{% block content %}
+  <table class="table table-striped">
+      <th>ID</th>
+      <th>Fecha Creado</th>
+      <th>Creado Por</th>
+      <th>Paciente</th>
+      <th>Descripcion</th>
+      <th>Vence</th>
+    {% for rec in recetas %}
+      <tr>
+          <td>{{ rec.id }}</td>
+          <td>{{ rec.fecha_creada  }}</td>
+          <td>{{ rec.creada_por }}</td>
+          <td>{{ rec.nombre_paciente }}</td>
+          <td>{{ rec.descripcion }}</td>
+          <td>{{ rec.fecha_vencimiento }}</td>
+          <td>
+              <a href="{% url 'Pacientes:Receta_PDF' rec.id %}"><button type="button" id="btnEditar" class="btn btn-success btn-circle"><i class="fas fa-pen fa-sm"></i></button></a>
+          </td>
+      </tr>
+    {% endfor %}
+  </table>
+
+
+{% endblock content %}
