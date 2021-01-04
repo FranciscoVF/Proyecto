@@ -5,3 +5,5 @@ from django.views import generic
 class Home(generic.TemplateView):
     template_name = "paginas/home.html"
 
+class Informacion(generic.TemplateView):
+    template_name = "paginas/informacion.html"

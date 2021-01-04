@@ -31,7 +31,7 @@
 		<a class="navbar-brand" href="{% url 'paginas:home'%}">Inicio</a>
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link fnt-color" href="" style="color: #fff;">Informacion</a>
+					<a class="nav-link fnt-color" href="{% url 'paginas:Informacion'%}" style="color: #fff;">Informacion</a>
 				</li>
 		    </ul>
             <ul class="navbar-nav">
@@ -42,11 +42,6 @@
             <ul class="navbar-nav">
 				<li class="nav-item">
 					<a class="nav-link fnt-color" href="{% url 'Medicos:List_Medicos'%}" style="color: #fff;">Medicos</a>
-				</li>
-		    </ul>
-                  <ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link fnt-color" href="" style="color: #fff;">Contactanos</a>
 				</li>
 		    </ul>
         {% if request.user.is_superuser %}
