@@ -1,0 +1,53 @@
+<style>
+ .titulos{
+  font-size:20px;
+  font-family:'Courier New';
+
+  }
+  .relleno{
+  font-size:15px;
+  font-family:'Courier New';
+  text-decoration: underline;
+  }
+  .derecha{
+  text-align:right;
+  }
+  .izquierda{
+  text-align:left;
+  }
+
+</style>
+
+
+{% csrf_token %}
+{% for cit in citas %}
+<div id="encabezado">
+ <p class="derecha">
+ <span class="titulos">Fecha creado: </span> <span class="relleno">{{ cit.fecha_creada|date:"F d Y" }}</span>
+ </p>
+<br>
+</div>
+{% endfor %}
+
+
+ {% for med in medico %}
+ <span class="titulos">Medico:</span> <span class="relleno">{{ med.nombre }} {{ med.apellido_p }} {{ med.apellido_m }}</span>
+
+{% endfor %}
+
+
+{% for cit in citas %}
+ <span class="titulos">Paciente:</span> <span class="relleno">{{ cit.nombre_paciente }}</span>
+<p></p>
+{% endfor %}
+
+{% for cit in citas %}
+<span class="titulos">Cita en area de:</span> <span class="relleno">DR.{{ cit.servicio }}</span>
+<p></p>
+{% endfor %}
+
+ {% for cit in citas %}
+ <span class="titulos">Fecha y hora:</span>  <span class="relleno">{{ cit.dia_hora_cita }}</span>
+<p></p>
+<p class="titulos" style="text-align:right">Firma del medico: ___________________</p>
+{% endfor %}
