@@ -18,11 +18,8 @@
   <!-- Custom styles for this template-->
     <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-
 </head>
-
-<body id="page-top">
-
+<body>
   <div id="wrapper">
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
@@ -91,10 +88,11 @@
 {% endblock content %}
 {% block footer %}
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
+      <footer style="margin-top: 300px;">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
+            <span style="lenght:400px;">Copyright &copy; Your Website 2020</span>
+
           </div>
         </div>
       </footer>
@@ -141,5 +139,4 @@
   <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
 
 </body>
-
 </html>
