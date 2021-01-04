@@ -122,3 +122,22 @@ class GeneratePDF(View):
         html = template.render(context)
         pdf = render_to_pdf('consultas/receta.html', context)
         return HttpResponse(pdf, content_type='application/pdf')
+
+class GeneratePDF2(View):
+    def get(self, request, pk, *args, **kwargs):
+        template = get_template("consultas/cita.html")
+        consulta = Cita.objects.get(id=pk)
+        context ={
+            "citas": Cita.objects.filter(id=pk),
+            "medico": Medicos.objects.filter(medico=consulta.creada_por)
+        }
+        html = template.render(context)
+        pdf = render_to_pdf('consultas/cita.html', context)
+        return HttpResponse(pdf, content_type='application/pdf')
+
+
+def MedicoCitasCreadas(request, pk):
+    context = {
+        "citas": Cita.objects.filter(creada_por=pk).order_by('-fecha_creada')
+    }
+    return render(request, "consultas/citas_creadas.html", context)

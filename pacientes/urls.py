@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path,include
 from .views import CrearConsulta, CrearCita, CrearReceta, MedicoConsultarCitas, BitacorasSeccion, \
     DirectorListaRecetas, DirectorListaPacientes, DirectorListaCitas, MedicoConsultarRecetas, \
-    GeneratePDF
+    GeneratePDF, MedicoCitasCreadas, GeneratePDF2
 
 app_name='Pacientes'
 
@@ -15,10 +15,12 @@ urlpatterns = [
 
     path('consultarCitas/<int:pk>/', MedicoConsultarCitas, name="Consultar_citas"),
     path('consultarRecetas/<int:pk>/', MedicoConsultarRecetas, name="Consultar_recetas"),
+    path('citasCreadas/<int:pk>/', MedicoCitasCreadas, name="Citas_Creadas"),
 
     path('listaRecetas/', DirectorListaRecetas.as_view(),name="Director_Lista_Recetas"),
     path('listaPacientes/', DirectorListaPacientes.as_view(),name="Director_Lista_Pacientes"),
     path('listaCitas/', DirectorListaCitas.as_view(),name="Director_Lista_Citas"),
 
     path('recetaPDF/<int:pk>/', GeneratePDF.as_view(), name="Receta_PDF"),
+    path('citaPDF/<int:pk>/', GeneratePDF2.as_view(), name="Cita_PDF"),
 ]

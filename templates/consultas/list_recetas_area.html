@@ -10,6 +10,7 @@
       <th>Paciente</th>
       <th>Descripcion</th>
       <th>Vence</th>
+      <th></th>
     {% for rec in recetas %}
       <tr>
           <td>{{ rec.id }}</td>
@@ -19,7 +20,7 @@
           <td>{{ rec.descripcion }}</td>
           <td>{{ rec.fecha_vencimiento }}</td>
           <td>
-              <a href="{% url 'Pacientes:Receta_PDF' rec.id %}"><button type="button" id="btnEditar" class="btn btn-success btn-circle"><i class="fas fa-pen fa-sm"></i></button></a>
+              <a href="{% url 'Pacientes:Receta_PDF' rec.id %}"><button type="button" id="btnEditar" class="btn btn-success btn-circle"><i class="fas fa-print fa-sm"></i></button></a>
           </td>
       </tr>
     {% endfor %}

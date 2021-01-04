@@ -43,6 +43,6 @@
 <p></p>
  <span class="titulos">Descripcion:</span>  <span class="relleno">{{ rec.descripcion }}</span>
 <p></p>
- <span class="titulos">Vencimiento:</span> <span class="relleno">{{ rec.fecha_vencimiento|date:"F d Y" }}</span>
+ <p class="titulos">Vencimiento: {{ rec.fecha_vencimiento|date:"F d Y" }}</p>
 <p class="titulos" style="text-align:right">Firma del medico: ___________________</p>
 {% endfor %}

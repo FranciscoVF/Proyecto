@@ -70,6 +70,7 @@
                 <a href="{% url 'Pacientes:Crear_Receta' %}">Crear receta</a>
                 <a href="{% url 'Pacientes:Consultar_citas' request.user.id %}">Citas en area</a>
                 <a href="{% url 'Pacientes:Consultar_recetas' request.user.id %}">Recetas creadas</a>
+                <a href="{% url 'Pacientes:Citas_Creadas' request.user.id %}">Citas creadas</a>
                 <a href="{% url 'logout'%}">Logout</a>
             </div>
         </div>
